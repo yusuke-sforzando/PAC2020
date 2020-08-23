@@ -1,4 +1,4 @@
-# Python Ability Check 2020 - <渡邉>
+# Python Ability Check 2020 - <渡邉 裕介>
 
 ## How to Run
 
