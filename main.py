@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # coding: utf_8
 
+from tqdm import tqdm
 
 from hand import Janken_Hand
-
 from strategy import Janken_Strategy
 from strategy import Suneo_Strategy
 from strategy import Sizuka_Strategy
@@ -44,7 +44,7 @@ def main(first, second, trials):
     player2 = Player(second)
     result_list = []
 
-    for i in range(trials):
+    for i in tqdm(range(trials)):
 
         # 一人目のストラテジ判定
         if first == str("ドラえもん"):
