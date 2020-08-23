@@ -22,7 +22,7 @@
 
 ここで、`源静香`の手は±10%までを許すものとする。
 
-## Refrences
+## References
 
 - [Python 3.8.5 ドキュメント](https://docs.python.org/ja/3/)
 - [Python基礎 オブジェクト指向編](https://codeprep.jp/books/76)
