@@ -1,5 +1,3 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
 name: Python application
 
@@ -18,7 +16,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8 hacking pytest pytest-cov tqdm
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with pytest
         run: |
           pytest -vv --durations=0 --cov . --cov-branch --ignore-glob="venv/**/*" --cov-report=xml

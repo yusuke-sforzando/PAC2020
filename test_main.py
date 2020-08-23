@@ -26,6 +26,3 @@ def test_two_Sizuka():
     assert min < result[1] < max
     assert min < result[2] < max
 
-def test_another_one():
-    result = main("渡邉裕介",random.choice(character),1000)
-    assert 
