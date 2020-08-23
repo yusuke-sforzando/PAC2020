@@ -19,9 +19,7 @@
 ### テストツールを用いて`源静香`の手がランダムであるかテストする
 
 1. ターミナルから`pip install pytest`を実行して`pytest`でのテスト環境を構築する
-1. `pytest -v test_main.py`を実行して`源静香`の手がランダムか判定する
-
-ここで、`源静香`の手は±10%までを許すものとする。
+1. `pytest -v test_main.py`を実行する
 
 ## References
 
