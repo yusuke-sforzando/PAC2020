@@ -3,7 +3,7 @@
 
 name: Python application
 
-on: [ workflow_dispatch, push ]
+on: [ push ]
 
 jobs:
   build:
@@ -19,11 +19,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 hacking pytest pytest-cov
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: make clean
-        run: make clean
-      - name: Lint with flake8
-        run: |
-          flake8 . --config .flake8
       - name: Test with pytest
         run: |
           pytest -vv --durations=0 --cov . --cov-branch --ignore-glob="venv/**/*" --cov-report=xml
