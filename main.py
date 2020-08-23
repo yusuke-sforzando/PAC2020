@@ -44,6 +44,8 @@ def main(first, second, trials):
     player2 = Player(second)
     result_list = []
 
+
+
     for i in range(trials):
 
         # 一人目のストラテジ判定
@@ -66,7 +68,7 @@ def main(first, second, trials):
         if second == str("ドラえもん"):
             player2.strategy = Doraemon_Strategy()
 
-        if first == str("源静香"):
+        if second == str("源静香"):
             player2.strategy = Sizuka_Strategy()
 
         if second == str("骨川スネ夫"):
@@ -127,6 +129,18 @@ def main(first, second, trials):
 
         rate = win_cnt / times
         times += 1
+
+        # 源静香が先手の時の各手の確率
+        if first_hand == "グー":
+            cnt_goo += 1
+
+        if first_hand == "チョキ":
+            cnt_chii += 1
+
+        if first_hand == "パー":
+            cnt_paa += 1
+
+        # 源静香が後手の時の各手の確率
         if second_hand == "グー":
             cnt_goo += 1
 
@@ -135,6 +149,7 @@ def main(first, second, trials):
 
         if second_hand == "パー":
             cnt_paa += 1
+
     result_tuple = tuple(result_list)
     print(result_tuple)
     print("勝率は :{}%です。".format(rate * 100))
