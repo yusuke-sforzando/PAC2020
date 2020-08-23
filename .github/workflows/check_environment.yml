@@ -18,6 +18,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8 hacking pytest pytest-cov tqdm
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with pytest
         run: |
           pytest -vv --durations=0 --cov . --cov-branch --ignore-glob="venv/**/*" --cov-report=xml
