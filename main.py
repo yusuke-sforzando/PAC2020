@@ -4,12 +4,12 @@
 
 from hand import Janken_Hand
 
-from strategy import Janken_Strategy
-from strategy import Suneo_Strategy
-from strategy import Sizuka_Strategy
 from strategy import Doraemon_Strategy
 from strategy import Dorami_Strategy
+from strategy import Janken_Strategy
 from strategy import Nobita_Strategy
+from strategy import Sizuka_Strategy
+from strategy import Suneo_Strategy
 
 
 class Player:
