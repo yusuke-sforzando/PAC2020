@@ -44,8 +44,6 @@ def main(first, second, trials):
     player2 = Player(second)
     result_list = []
 
-
-
     for i in range(trials):
 
         # 一人目のストラテジ判定
@@ -130,7 +128,6 @@ def main(first, second, trials):
         rate = win_cnt / times
         times += 1
 
-        # 源静香が先手の時の各手の確率
         if first_hand == "グー":
             cnt_goo += 1
 
@@ -140,7 +137,6 @@ def main(first, second, trials):
         if first_hand == "パー":
             cnt_paa += 1
 
-        # 源静香が後手の時の各手の確率
         if second_hand == "グー":
             cnt_goo += 1
 
