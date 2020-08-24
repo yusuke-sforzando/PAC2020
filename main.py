@@ -4,12 +4,12 @@
 
 from hand import Janken_Hand
 
-from strategy import Janken_Strategy
-from strategy import Suneo_Strategy
-from strategy import Sizuka_Strategy
 from strategy import Doraemon_Strategy
 from strategy import Dorami_Strategy
+from strategy import Janken_Strategy
 from strategy import Nobita_Strategy
+from strategy import Sizuka_Strategy
+from strategy import Suneo_Strategy
 
 
 class Player:
@@ -66,7 +66,7 @@ def main(first, second, trials):
         if second == str("ドラえもん"):
             player2.strategy = Doraemon_Strategy()
 
-        if first == str("源静香"):
+        if second == str("源静香"):
             player2.strategy = Sizuka_Strategy()
 
         if second == str("骨川スネ夫"):
@@ -127,6 +127,16 @@ def main(first, second, trials):
 
         rate = win_cnt / times
         times += 1
+
+        if first_hand == "グー":
+            cnt_goo += 1
+
+        if first_hand == "チョキ":
+            cnt_chii += 1
+
+        if first_hand == "パー":
+            cnt_paa += 1
+
         if second_hand == "グー":
             cnt_goo += 1
 
@@ -135,6 +145,7 @@ def main(first, second, trials):
 
         if second_hand == "パー":
             cnt_paa += 1
+
     result_tuple = tuple(result_list)
     print(result_tuple)
     print("勝率は :{}%です。".format(rate * 100))

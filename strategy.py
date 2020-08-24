@@ -1,4 +1,5 @@
 import random
+
 from hand import Janken_Hand
 
 # ストラテジ定義
