@@ -1,8 +1,8 @@
 from main import main
 
 # ランダムの中央値と許容誤差の定義
-random_center = float(1 / 3)
-allowable_error = float(1 / 10)
+random_center = 1 / 3
+allowable_error = 1 / 10
 min = random_center - allowable_error
 max = random_center + allowable_error
 
