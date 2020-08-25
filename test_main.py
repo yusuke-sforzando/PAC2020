@@ -5,6 +5,7 @@ import random
 
 from hand import Janken_Hand
 from main import main
+from main import parse_args
 from main import Player
 
 # Charactorsの定義
@@ -23,6 +24,15 @@ def test_catch():
     with pytest.raises(ValueError) as ve:
         main("源静香", "野比のび太", 10001)
     assert "Out of range" in str(ve)
+
+
+# argparserのテスト
+def test_argument_parser():
+    parser = parse_args(["--first", "骨川スネ夫", "--second",
+                         "ドラえもん", "--trials", "100"])
+    assert parser.first == "骨川スネ夫"
+    assert parser.second == "ドラえもん"
+    assert parser.trials == 100
 
 
 # Class Player neme()のテスト
