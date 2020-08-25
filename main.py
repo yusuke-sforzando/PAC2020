@@ -174,12 +174,9 @@ def parse_args(args):
 
 
 if __name__ == "__main__":
-    first = "野比のび太"
-    second = "ドラミ"
-    trials = 20
     parser = parse_args(sys.argv[1:])
     char = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
-    if (first in char) & (second in char):
-        main(first, second, trials)
+    if (parser.first in char) & (parser.second in char):
+        main(parser.first, parser.second, parser.trials)
     else:
         print("==== ValueError!!! ===\n==== Try Again ====")
