@@ -165,7 +165,6 @@ def main(first, second, trials):
     second_rate_paa = second_cnt_paa / trials
     first_hand_rate = [first_rate_goo, first_rate_chii, first_rate_paa]
     second_hand_rate = [second_rate_goo, second_rate_chii, second_rate_paa]
-    two_result = [first_hand_rate, second_hand_rate]
     return first_hand_rate, second_hand_rate
 
 
