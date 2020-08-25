@@ -16,7 +16,7 @@ absolute_tolerance: float = 1 / 10
 
 # 一人目が静香のときのテスト
 def test_first_Sizuka():
-    result = main("源静香", random.choice(charactors), 100)
+    result = main("源静香", random.choice(charactors), 500)
     assert isclose(random_center, result[0]
                    [0], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[0]
@@ -27,7 +27,7 @@ def test_first_Sizuka():
 
 # 二人目が静香のときのテスト
 def test_second_Sizuka():
-    result = main("野比のび太", "源静香", 100)
+    result = main("野比のび太", "源静香", 500)
     assert isclose(random_center, result[1]
                    [0], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[1]
@@ -38,7 +38,7 @@ def test_second_Sizuka():
 
 # 両方が静香のときのテスト
 def test_two_Sizuka():
-    result = main("源静香", "源静香", 100)
+    result = main("源静香", "源静香", 500)
     assert isclose(random_center, result[0]
                    [0], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[0]
@@ -55,15 +55,15 @@ def test_two_Sizuka():
 
 # ドラえもんのテスト
 def test_Doraemon():
-    result = main("ドラえもん", "野比のび太", 100)
+    result = main("ドラえもん", "野比のび太", 500)
     assert result[0][0] == 1.0
-    result = main("野比のび太", "ドラえもん", 100)
+    result = main("野比のび太", "ドラえもん", 500)
     assert result[1][0] == 1.0
 
 
 # ドラミのテスト
 def test_Dorami():
-    result = main("ドラミ", "ドラミ", 100)
+    result = main("ドラミ", "ドラミ", 500)
     random_center: float = 1 / 2
     random_quarter: float = 1 / 4
     assert isclose(random_center, result[0]
@@ -76,7 +76,7 @@ def test_Dorami():
 
 # スネ夫のテスト
 def test_Suneo():
-    result = main("骨川スネ夫", "野比のび太", 100)
+    result = main("骨川スネ夫", "野比のび太", 500)
     random_center: float = 1 / 2
     assert result[0][0] == 0.0
     assert isclose(random_center, result[0]
