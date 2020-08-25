@@ -4,7 +4,7 @@ import random
 
 from hand import Janken_Hand
 from main import main
-
+from main import Player
 
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
@@ -12,6 +12,13 @@ charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "�
 # ランダムの中央値と許容誤差の定義
 random_center = 1 / 3
 absolute_tolerance: float = 1 / 10
+
+
+# Class Player neme()のテスト
+def test_name():
+    charactor = random.choice(charactors)
+    test_player = Player(charactor).name
+    assert test_player == "Player" + charactor
 
 
 # 一人目が静香のときのテスト
@@ -93,3 +100,7 @@ def test_janken():
     assert str(goo) == "グー"
     assert str(chii) == "チョキ"
     assert str(paa) == "パー"
+
+
+if __name__ == "__main__":
+    test_name()

@@ -1,4 +1,4 @@
-## Describe the PR
+# Describe the PR
 
 To close #999.
 Related issue and a clear and concise description of what the PR is.
