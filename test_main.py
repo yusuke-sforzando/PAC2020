@@ -134,6 +134,9 @@ def test_win_lose():
     assert hand1 in [0, 1, 2]
     assert hand2 in [0, 1, 2]
 
+
+# ジャンケンがルール通りになっているかチェック
+def judge():
     # assert hand1 in ["グー", "チョキ", "パー"]
     # あいこのとき正しいかチェック
     hand1 = Janken_Hand.goo
@@ -156,11 +159,6 @@ def test_win_lose():
     if hand1.win_to(hand2) or hand1.lose_to(hand2):
         judge = False
     assert judge
-
-
-# ジャンケンがルール通りになっているかチェック
-def judge():
-    pass
 
 
 if __name__ == "__main__":
