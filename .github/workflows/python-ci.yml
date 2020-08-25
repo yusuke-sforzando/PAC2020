@@ -21,5 +21,5 @@ jobs:
           flake8 . --config .flake8
       - name: Test with pytest
         run: |
-          pytest -vv --capture=no . --cov --cov-report=xml
+          pytest -vv test_main.py--capture=no . --cov --cov-report=xml
       - uses: codecov/codecov-action@v1
