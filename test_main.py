@@ -4,7 +4,7 @@ import random
 
 from hand import Janken_Hand
 from main import main
-from main import Player
+
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
 
