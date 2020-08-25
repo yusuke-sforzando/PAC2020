@@ -67,9 +67,8 @@ def test_Doraemon():
     result = main("野比のび太", "ドラえもん", 1000)
     assert result[1][0] == 1.0
 
+
 # ドラミのテスト
-
-
 def test_Dorami():
     result = main("ドラミ", "野比のび太", 1000)
     random_center: float = 1 / 2
@@ -81,8 +80,12 @@ def test_Dorami():
     assert isclose(random_quarter, result[0]
                    [2], abs_tol=absolute_tolerance)
     result = main("野比のび太", "ドラミ", 1000)
-    random_center: float = 1 / 2
-    random_quarter: float = 1 / 4
+    assert isclose(random_center, result[1]
+                   [0], abs_tol=absolute_tolerance)
+    assert isclose(random_quarter, result[1]
+                   [1], abs_tol=absolute_tolerance)
+    assert isclose(random_quarter, result[1]
+                   [2], abs_tol=absolute_tolerance)
 
 
 # スネ夫のテスト
