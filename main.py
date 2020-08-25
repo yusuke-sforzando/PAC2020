@@ -14,6 +14,8 @@ from strategy import Nobita_Strategy
 from strategy import Sizuka_Strategy
 from strategy import Suneo_Strategy
 
+char = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
+
 
 class Player:
     def __init__(self, name):
@@ -166,7 +168,7 @@ def parse_args(args):
     parser = argparse.ArgumentParser()
     parser.add_argument("--first", type=str, default="野比のび太",
                         help="Select the first")
-    parser.add_argument("--second", type=str, default="ドラえもん",
+    parser.add_argument("--second", type=str, default="野比のび太",
                         help="Select the second")
     parser.add_argument("--trials", type=int, default=100,
                         help="trilas: 0 < trials < 10000")
@@ -174,13 +176,8 @@ def parse_args(args):
 
 
 if __name__ == "__main__":
-    first = "野比のび太"
-    second = "ドラミ"
-    trials = 50
     parser = parse_args(sys.argv[1:])
-    char = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
-
-    if (first in char) & (second in char):
+    if (parser.first in char) & (parser.second in char):
         main(parser.first, parser.second, parser.trials)
     else:
         print("==== ValueError!!! ===\n==== Try Again ====")
