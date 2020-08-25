@@ -34,7 +34,11 @@ class Player:
 result_list = []
 
 
-def main(first, second, trials):
+def main(first: str, second: str, trials: int = 100):
+    if 10000 < trials:
+        raise ValueError("trials: Out of range")
+    if first not in char or second not in char:
+        raise ValueError("There is no such person")
     win_cnt = 0  # firstプレイヤーが勝った数
 
     nobita1 = 0  # firstのび太の一回前の手
@@ -54,6 +58,7 @@ def main(first, second, trials):
 
     player1 = Player(first)
     player2 = Player(second)
+
     print("プレイヤー: {} VS {} !\n".format(first, second))
 
     for i in tqdm(range(trials)):
@@ -177,7 +182,4 @@ def parse_args(args):
 
 if __name__ == "__main__":
     parser = parse_args(sys.argv[1:])
-    if (parser.first in char) & (parser.second in char):
-        main(parser.first, parser.second, parser.trials)
-    else:
-        print("==== ValueError!!! ===\n==== Try Again ====")
+    main(parser.first, parser.second, parser.trials)
