@@ -1,5 +1,6 @@
 
 from math import isclose
+import pytest
 import random
 
 from hand import Janken_Hand
@@ -12,6 +13,16 @@ charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "�
 # ランダムの中央値と許容誤差の定義
 random_center = 1 / 3
 absolute_tolerance: float = 1 / 10
+
+
+# 予期しない入力値を判定できるかのテスト
+def test_catch():
+    with pytest.raises(ValueError) as ve:
+        main("渡邉裕介", "広瀬すず", 100)
+    assert "There is no such person" in str(ve)
+    with pytest.raises(ValueError) as ve:
+        main("源静香", "野比のび太", 10001)
+    assert "Out of range" in str(ve)
 
 
 # Class Player neme()のテスト
