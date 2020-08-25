@@ -168,6 +168,5 @@ if __name__ == "__main__":
     if (first in char) & (second in char):
         print("プレイヤー: {} VS {} !\n".format(first, second))
         main(first, second, trials)
-        print(result_list)
     else:
         print("==== ValueError!!! ===\n==== Try Again ====")
