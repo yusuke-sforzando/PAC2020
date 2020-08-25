@@ -36,7 +36,7 @@ def main(first, second, trials):
     nobita2 = 0  # secondのび太の一回前の手
 
     result = 0  # 勝敗結果
-    # firstの各手の確率
+    # firstの各手の回数
     first_cnt_goo = 0
     first_cnt_chii = 0
     first_cnt_paa = 0
