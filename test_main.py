@@ -85,13 +85,5 @@ def test_Suneo():
 
 
 def test_arg():
-    import argparse
-    parse_args(sys.argv[1:])
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--first", type=str, default="野比のび太",
-                        help="Select the first")
-    parser.add_argument("--second", type=str, default="ドラえもん",
-                        help="Select the second")
-    parser.add_argument("--trials", type=int, default=100,
-                        help="trilas: 0 < tirals < 10000")
-    print(parser.parse_args(sys.argv[1:]))
+    parser = parse_args(sys.argv[1:])
+    print(parser)
