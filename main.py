@@ -36,10 +36,16 @@ def main(first, second, trials):
     nobita2 = 0  # secondのび太の一回前の手
 
     result = 0  # 勝敗結果
-    cnt_goo = 0
-    cnt_chii = 0
-    cnt_paa = 0
-    cnt_all = 0
+    # firstの各手の確率
+    first_cnt_goo = 0
+    first_cnt_chii = 0
+    first_cnt_paa = 0
+
+    # secondの各手の確率
+    second_cnt_goo = 0
+    second_cnt_chii = 0
+    second_cnt_paa = 0
+
     player1 = Player(first)
     player2 = Player(second)
     result_list = []
@@ -129,32 +135,39 @@ def main(first, second, trials):
         times += 1
 
         if first_hand == "グー":
-            cnt_goo += 1
+            first_cnt_goo += 1
 
         if first_hand == "チョキ":
-            cnt_chii += 1
+            first_cnt_chii += 1
 
         if first_hand == "パー":
-            cnt_paa += 1
+            first_cnt_paa += 1
 
         if second_hand == "グー":
-            cnt_goo += 1
+            second_cnt_goo += 1
 
         if second_hand == "チョキ":
-            cnt_chii += 1
+            second_cnt_chii += 1
 
         if second_hand == "パー":
-            cnt_paa += 1
+            second_cnt_paa += 1
 
     result_tuple = tuple(result_list)
     print(result_tuple)
     print("勝率は :{}%です。".format(rate * 100))
 
-    cnt_all = cnt_chii + cnt_goo + cnt_paa
-    rate_goo = cnt_goo / cnt_all
-    rate_chii = cnt_chii / cnt_all
-    rate_paa = cnt_paa / cnt_all
-    return rate_goo, rate_chii, rate_paa
+    # first,seconの各手の確率
+
+    first_rate_goo = first_cnt_goo / trials
+    first_rate_chii = first_cnt_chii / trials
+    first_rate_paa = first_cnt_paa / trials
+    second_rate_goo = second_cnt_goo / trials
+    second_rate_chii = second_cnt_chii / trials
+    second_rate_paa = second_cnt_paa / trials
+    first_hand_rate = [first_rate_goo, first_rate_chii, first_rate_paa]
+    second_hand_rate = [second_rate_goo, second_rate_chii, second_rate_paa]
+    two_result = [first_hand_rate, second_hand_rate]
+    return two_result
 
 
 if __name__ == "__main__":
