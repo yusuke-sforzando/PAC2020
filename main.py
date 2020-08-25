@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-# coding: utf_8
 
+import argparse
+import sys
 from tqdm import tqdm
 
 from hand import Janken_Hand
@@ -151,7 +152,7 @@ def main(first, second, trials):
             second_cnt_paa += 1
     rate = win_cnt / trials
     print("勝率は :{}%です。".format(rate * 100))
-
+    print(result_list)
     # first,secondの各手の確率
     first_hand_rate = (first_cnt_goo / trials,
                        first_cnt_chii / trials, first_cnt_paa / trials)
@@ -160,10 +161,24 @@ def main(first, second, trials):
     return first_hand_rate, second_hand_rate
 
 
+def parse_args(args):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--first", type=str, default="野比のび太",
+                        help="Select the first")
+    parser.add_argument("--second", type=str, default="ドラえもん",
+                        help="Select the second")
+    parser.add_argument("--trials", type=int, default=100,
+                        help="trilas: 0 < tirals < 10000")
+    return parser.parse_args(args)
+
+
 if __name__ == "__main__":
+
     first = "野比のび太"
     second = "ドラミ"
     trials = 20
+
+    parser = parse_args(sys.argv[1:])
     char = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
     if (first in char) & (second in char):
         print("プレイヤー: {} VS {} !\n".format(first, second))
