@@ -2,8 +2,8 @@
 from math import isclose
 import random
 
-
 from main import main
+
 
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
@@ -11,6 +11,14 @@ charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "�
 # ランダムの中央値と許容誤差の定義
 random_center = 1 / 3
 absolute_tolerance: float = 1 / 10
+
+
+def test_arg():
+    # parser = parse_args(sys.argv[1:])
+    # assert parser.first in ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
+    # assert parser.second in ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
+    # assert 0 < parser.trials < 1000
+    pass
 
 
 # 一人目が静香のときのテスト

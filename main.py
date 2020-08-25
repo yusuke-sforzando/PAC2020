@@ -181,5 +181,6 @@ if __name__ == "__main__":
     if (first in char) & (second in char):
         print("プレイヤー: {} VS {} !\n".format(first, second))
         main(first, second, trials)
+        main(parser.first, parser.second, parser.trials)
     else:
         print("==== ValueError!!! ===\n==== Try Again ====")
