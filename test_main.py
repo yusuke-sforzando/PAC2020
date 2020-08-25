@@ -92,8 +92,6 @@ def test_Suneo():
     assert isclose(random_center, result[0]
                    [2], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[1]
-                   [1], abs_tol=absolute_tolerance)
-    assert isclose(random_center, result[1]
                    [2], abs_tol=absolute_tolerance)
 
 
