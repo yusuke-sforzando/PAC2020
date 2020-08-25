@@ -27,8 +27,6 @@ class Player:
 
 
 def main(first, second, trials):
-    times = 1  # 現在までの試行回数
-
     win_cnt = 0  # firstプレイヤーが勝った数
 
     nobita1 = 0  # firstのび太の一回前の手
@@ -36,10 +34,16 @@ def main(first, second, trials):
     nobita2 = 0  # secondのび太の一回前の手
 
     result = 0  # 勝敗結果
-    cnt_goo = 0
-    cnt_chii = 0
-    cnt_paa = 0
-    cnt_all = 0
+    # firstの各手の回数
+    first_cnt_goo = 0
+    first_cnt_chii = 0
+    first_cnt_paa = 0
+
+    # secondの各手の回数
+    second_cnt_goo = 0
+    second_cnt_chii = 0
+    second_cnt_paa = 0
+
     player1 = Player(first)
     player2 = Player(second)
     result_list = []
@@ -125,36 +129,33 @@ def main(first, second, trials):
         result_list.append(res)
         # print(res)
 
-        rate = win_cnt / times
-        times += 1
-
         if first_hand == "グー":
-            cnt_goo += 1
+            first_cnt_goo += 1
 
         if first_hand == "チョキ":
-            cnt_chii += 1
+            first_cnt_chii += 1
 
         if first_hand == "パー":
-            cnt_paa += 1
+            first_cnt_paa += 1
 
         if second_hand == "グー":
-            cnt_goo += 1
+            second_cnt_goo += 1
 
         if second_hand == "チョキ":
-            cnt_chii += 1
+            second_cnt_chii += 1
 
         if second_hand == "パー":
-            cnt_paa += 1
-
-    result_tuple = tuple(result_list)
-    print(result_tuple)
+            second_cnt_paa += 1
+    rate = win_cnt / trials
+    print(result_list)
     print("勝率は :{}%です。".format(rate * 100))
 
-    cnt_all = cnt_chii + cnt_goo + cnt_paa
-    rate_goo = cnt_goo / cnt_all
-    rate_chii = cnt_chii / cnt_all
-    rate_paa = cnt_paa / cnt_all
-    return rate_goo, rate_chii, rate_paa
+    # first,secondの各手の確率
+    first_hand_rate = (first_cnt_goo / trials,
+                       first_cnt_chii / trials, first_cnt_paa / trials)
+    second_hand_rate = (second_cnt_goo / trials,
+                        second_cnt_chii / trials, first_cnt_paa / trials)
+    return first_hand_rate, second_hand_rate
 
 
 if __name__ == "__main__":
