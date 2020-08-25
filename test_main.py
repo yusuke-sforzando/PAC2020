@@ -2,8 +2,10 @@
 from math import isclose
 import random
 
-from main import main
 
+from main import main
+from main import parse_args
+import sys
 
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
@@ -80,3 +82,16 @@ def test_Suneo():
                    [1], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[0]
                    [2], abs_tol=absolute_tolerance)
+
+
+def test_arg():
+    import argparse
+    parse_args(sys.argv[1:])
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--first", type=str, default="野比のび太",
+                        help="Select the first")
+    parser.add_argument("--second", type=str, default="ドラえもん",
+                        help="Select the second")
+    parser.add_argument("--trials", type=int, default=100,
+                        help="trilas: 0 < tirals < 10000")
+    print(parser.parse_args(sys.argv[1:]))
