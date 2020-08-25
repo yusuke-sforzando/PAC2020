@@ -106,11 +106,12 @@ def test_janken():
     assert str(paa) == "パー"
 
 
-def test_win_lose():
+def right_hand():
     player1 = Player(random.choice(charactors))
     player2 = Player(random.choice(charactors))
     assert player1.next_hand().value == 1
     assert player2.next_hand().value == 1
+
     player1.strategy = Doraemon_Strategy()
     player2.strategy = Dorami_Strategy()
     hand1 = player1.next_hand().value
@@ -131,7 +132,3 @@ def test_win_lose():
     hand2 = player2.next_hand().value
     assert hand1 in [0, 1, 2]
     assert hand2 in [0, 1, 2]
-
-
-if __name__ == "__main__":
-    pass
