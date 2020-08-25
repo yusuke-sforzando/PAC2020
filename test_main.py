@@ -7,6 +7,7 @@ from hand import Janken_Hand
 from main import main
 from main import parse_args
 from main import Player
+from strategy import Janken_Strategy
 
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
@@ -128,3 +129,9 @@ def test_janken():
 
 if __name__ == "__main__":
     test_name()
+
+
+# ストラテジテスト
+def test_strategy():
+    test_player = Janken_Strategy()
+    assert test_player.next_hand() == Janken_Hand.chii
