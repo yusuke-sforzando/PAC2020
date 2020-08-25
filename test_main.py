@@ -50,14 +50,18 @@ def test_Doraemon():
 def test_Dorami():
     result = main("ドラミ", "野比のび太", 1000)
     random_center = 1 / 2
+    random_quarter = 1 / 4
     min = random_center - allowable_error
     max = random_center + allowable_error
     assert min < result[0][0] < max
-    assert min / 2 < result[0][1] < max / 2
-    assert min / 2 < result[0][2] < max / 2
-
+    assert random_quarter - \
+        allowable_error < result[0][1] < random_quarter + allowable_error
+    assert random_quarter - \
+        allowable_error < result[0][1] < random_quarter + allowable_error
 
 # スネ夫のテスト
+
+
 def test_Suneo():
     result = main("骨川スネ夫", "野比のび太", 1000)
     random_center = 1 / 2

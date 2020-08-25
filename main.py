@@ -27,8 +27,6 @@ class Player:
 
 
 def main(first, second, trials):
-    times = 1  # 現在までの試行回数
-
     win_cnt = 0  # firstプレイヤーが勝った数
 
     nobita1 = 0  # firstのび太の一回前の手
@@ -131,9 +129,6 @@ def main(first, second, trials):
         result_list.append(res)
         # print(res)
 
-        rate = win_cnt / times
-        times += 1
-
         if first_hand == "グー":
             first_cnt_goo += 1
 
@@ -151,20 +146,15 @@ def main(first, second, trials):
 
         if second_hand == "パー":
             second_cnt_paa += 1
-
+    rate = win_cnt / trials
     print(result_list)
     print("勝率は :{}%です。".format(rate * 100))
 
     # first,seconの各手の確率
-
-    first_rate_goo = first_cnt_goo / trials
-    first_rate_chii = first_cnt_chii / trials
-    first_rate_paa = first_cnt_paa / trials
-    second_rate_goo = second_cnt_goo / trials
-    second_rate_chii = second_cnt_chii / trials
-    second_rate_paa = second_cnt_paa / trials
-    first_hand_rate = [first_cnt_goo / trials, first_cnt_chii / trials, first_cnt_paa / trials]
-    second_hand_rate = [second_rate_goo, second_rate_chii, second_rate_paa]
+    first_hand_rate = [first_cnt_goo / trials,
+                       first_cnt_chii / trials, first_cnt_paa / trials]
+    second_hand_rate = [second_cnt_goo / trials,
+                        second_cnt_chii / trials, first_cnt_paa / trials]
     return first_hand_rate, second_hand_rate
 
 
