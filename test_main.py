@@ -67,7 +67,6 @@ def test_Dorami():
                    [0], abs_tol=absolute_tolerance)
     assert isclose(random_quarter, result[0]
                    [1], abs_tol=absolute_tolerance)
-
     assert isclose(random_quarter, result[0]
                    [2], abs_tol=absolute_tolerance)
 
