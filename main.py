@@ -150,12 +150,12 @@ def main(first, second, trials):
     print(result_list)
     print("勝率は :{}%です。".format(rate * 100))
 
-    # first,seconの各手の確率
+    # first,secondの各手の確率
     first_hand_rate = [first_cnt_goo / trials,
                        first_cnt_chii / trials, first_cnt_paa / trials]
     second_hand_rate = [second_cnt_goo / trials,
                         second_cnt_chii / trials, first_cnt_paa / trials]
-    return first_hand_rate, second_hand_rate
+    return tuple(first_hand_rate), tuple(second_hand_rate)
 
 
 if __name__ == "__main__":

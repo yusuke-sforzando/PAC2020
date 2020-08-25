@@ -78,6 +78,7 @@ def test_Dorami():
 def test_Suneo():
     result = main("骨川スネ夫", "野比のび太", 1000)
     random_center: float = 1 / 2
+    assert result[0][0] == 0.0
     assert isclose(random_center, result[0]
                    [1], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[0]
