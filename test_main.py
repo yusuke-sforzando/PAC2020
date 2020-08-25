@@ -4,8 +4,6 @@ import random
 
 
 from main import main
-from main import parse_args
-import sys
 
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
@@ -15,12 +13,7 @@ random_center = 1 / 3
 absolute_tolerance: float = 1 / 10
 
 
-def test_arg():
-    parser = parse_args(sys.argv[1:])
-
 # 一人目が静香のときのテスト
-
-
 def test_first_Sizuka():
     result = main("源静香", random.choice(charactors), 1000)
     assert isclose(random_center, result[0]
