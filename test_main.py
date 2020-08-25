@@ -127,10 +127,6 @@ def test_janken():
     assert str(paa) == "パー"
 
 
-if __name__ == "__main__":
-    test_name()
-
-
 # ストラテジテスト
 def test_strategy():
     test_player = Janken_Strategy()

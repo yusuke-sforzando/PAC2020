@@ -23,7 +23,3 @@ class Janken_Hand(Enum):
 
     def lose_to(self, hand):
         return (self.value != hand.value) and not self.win_to(hand)
-
-
-if __name__ == "__main__":
-    print(Janken_Hand.chii)
