@@ -15,7 +15,12 @@ random_center = 1 / 3
 absolute_tolerance: float = 1 / 10
 
 
+def test_arg():
+    parser = parse_args(sys.argv[1:])
+
 # 一人目が静香のときのテスト
+
+
 def test_first_Sizuka():
     result = main("源静香", random.choice(charactors), 1000)
     assert isclose(random_center, result[0]
@@ -82,8 +87,3 @@ def test_Suneo():
                    [1], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[0]
                    [2], abs_tol=absolute_tolerance)
-
-
-def test_arg():
-    parser = parse_args(sys.argv[1:])
-    print(parser)
