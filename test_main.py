@@ -2,9 +2,9 @@
 from math import isclose
 import random
 
+from hand import Janken_Hand
 from main import main
-
-
+from main import Player
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
 
@@ -88,3 +88,18 @@ def test_Suneo():
                    [1], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[0]
                    [2], abs_tol=absolute_tolerance)
+
+# ジャンケンのテスト
+
+
+def test_janken():
+    goo = Janken_Hand(0)
+    chii = Janken_Hand(1)
+    paa = Janken_Hand(2)
+    assert str(goo) == "グー"
+    assert str(chii) == "チョキ"
+    assert str(paa) == "パー"
+
+
+if __name__ == "__main__":
+    test_janken()
