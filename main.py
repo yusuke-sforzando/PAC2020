@@ -52,6 +52,7 @@ def main(first, second, trials):
 
     player1 = Player(first)
     player2 = Player(second)
+    print("プレイヤー: {} VS {} !\n".format(first, second))
 
     for i in tqdm(range(trials)):
 
@@ -168,7 +169,7 @@ def parse_args(args):
     parser.add_argument("--second", type=str, default="ドラえもん",
                         help="Select the second")
     parser.add_argument("--trials", type=int, default=100,
-                        help="trilas: 0 < tirals < 10000")
+                        help="trilas: 0 < trials < 10000")
     return parser.parse_args(args)
 
 
@@ -179,8 +180,6 @@ if __name__ == "__main__":
     parser = parse_args(sys.argv[1:])
     char = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
     if (first in char) & (second in char):
-        print("プレイヤー: {} VS {} !\n".format(first, second))
         main(first, second, trials)
-        main(parser.first, parser.second, parser.trials)
     else:
         print("==== ValueError!!! ===\n==== Try Again ====")

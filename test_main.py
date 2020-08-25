@@ -21,14 +21,6 @@ random_center = 1 / 3
 absolute_tolerance: float = 1 / 10
 
 
-def test_arg():
-    # parser = parse_args(sys.argv[1:])
-    # assert parser.first in ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
-    # assert parser.second in ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
-    # assert 0 < parser.trials < 1000
-    pass
-
-
 # 一人目が静香のときのテスト
 def test_first_Sizuka():
     result = main("源静香", random.choice(charactors), 1000)
@@ -72,9 +64,12 @@ def test_two_Sizuka():
 def test_Doraemon():
     result = main("ドラえもん", "野比のび太", 1000)
     assert result[0][0] == 1.0
-
+    result = main("野比のび太", "ドラえもん", 1000)
+    assert result[1][0] == 1.0
 
 # ドラミのテスト
+
+
 def test_Dorami():
     result = main("ドラミ", "野比のび太", 1000)
     random_center: float = 1 / 2
@@ -85,6 +80,9 @@ def test_Dorami():
                    [1], abs_tol=absolute_tolerance)
     assert isclose(random_quarter, result[0]
                    [2], abs_tol=absolute_tolerance)
+    result = main("野比のび太", "ドラミ", 1000)
+    random_center: float = 1 / 2
+    random_quarter: float = 1 / 4
 
 
 # スネ夫のテスト
@@ -135,31 +133,5 @@ def test_win_lose():
     assert hand2 in [0, 1, 2]
 
 
-# ジャンケンがルール通りになっているかチェック
-def judge():
-    # assert hand1 in ["グー", "チョキ", "パー"]
-    # あいこのとき正しいかチェック
-    hand1 = Janken_Hand.goo
-    hand2 = Janken_Hand.goo
-    judge = True
-    if hand1.win_to(hand2) or hand1.lose_to(hand2):
-        judge = False
-    assert judge
-
-    hand1 = Janken_Hand.chii
-    hand2 = Janken_Hand.chii
-    judge = True
-    if hand1.win_to(hand2) or hand1.lose_to(hand2):
-        judge = False
-    assert judge
-
-    hand1 = Janken_Hand.paa
-    hand2 = Janken_Hand.paa
-    judge = True
-    if hand1.win_to(hand2) or hand1.lose_to(hand2):
-        judge = False
-    assert judge
-
-
 if __name__ == "__main__":
-    test_win_lose()
+    pass
