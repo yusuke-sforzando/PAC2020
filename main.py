@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # coding: utf_8
 
+from tqdm import tqdm
 
 from hand import Janken_Hand
+
 
 from strategy import Doraemon_Strategy
 from strategy import Dorami_Strategy
@@ -26,6 +28,9 @@ class Player:
         return self.strategy.next_hand()
 
 
+result_list = []
+
+
 def main(first, second, trials):
     win_cnt = 0  # firstプレイヤーが勝った数
 
@@ -46,9 +51,8 @@ def main(first, second, trials):
 
     player1 = Player(first)
     player2 = Player(second)
-    result_list = []
 
-    for i in range(trials):
+    for i in tqdm(range(trials)):
 
         # 一人目のストラテジ判定
         if first == str("ドラえもん"):
@@ -98,6 +102,7 @@ def main(first, second, trials):
 
         else:
             first_hand = "パー"
+
         # 次のハンドを決定
         hand2 = player2.next_hand()
 
@@ -127,8 +132,6 @@ def main(first, second, trials):
 
         res = [first_hand, second_hand, result]
         result_list.append(res)
-        # print(res)
-
         if first_hand == "グー":
             first_cnt_goo += 1
 
@@ -147,7 +150,6 @@ def main(first, second, trials):
         if second_hand == "パー":
             second_cnt_paa += 1
     rate = win_cnt / trials
-    print(result_list)
     print("勝率は :{}%です。".format(rate * 100))
 
     # first,secondの各手の確率

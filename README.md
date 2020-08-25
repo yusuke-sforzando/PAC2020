@@ -6,6 +6,7 @@
 
 1. ターミナルから`python3 -m venv venv`を実行
 1. `source venv/bin/activate`を実行
+1. `pip install tqdm`で外部から進捗バー表示ライブラリをインストールする。
 1. `main.py`をテキストエディタで開く
 1. `main()`のパラメータを入力する
    1. `first`に一人目のキャラクターを入力
