@@ -41,7 +41,7 @@ def main(first, second, trials):
     first_cnt_chii = 0
     first_cnt_paa = 0
 
-    # secondの各手の確率
+    # secondの各手の回数
     second_cnt_goo = 0
     second_cnt_chii = 0
     second_cnt_paa = 0
@@ -152,8 +152,7 @@ def main(first, second, trials):
         if second_hand == "パー":
             second_cnt_paa += 1
 
-    result_tuple = tuple(result_list)
-    print(result_tuple)
+    print(result_list)
     print("勝率は :{}%です。".format(rate * 100))
 
     # first,seconの各手の確率
