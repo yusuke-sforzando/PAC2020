@@ -4,6 +4,14 @@ import random
 
 from hand import Janken_Hand
 from main import main
+from main import Player
+from strategy import Doraemon_Strategy
+from strategy import Dorami_Strategy
+from strategy import Janken_Strategy
+from strategy import Nobita_Strategy
+from strategy import Sizuka_Strategy
+from strategy import Suneo_Strategy
+
 
 # Charactorsの定義
 charactors = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
@@ -89,9 +97,8 @@ def test_Suneo():
     assert isclose(random_center, result[0]
                    [2], abs_tol=absolute_tolerance)
 
+
 # ジャンケンのテスト
-
-
 def test_janken():
     goo = Janken_Hand(0)
     chii = Janken_Hand(1)
@@ -101,5 +108,34 @@ def test_janken():
     assert str(paa) == "パー"
 
 
+def test_win_lose():
+    player1 = Player(random.choice(charactors))
+    player2 = Player(random.choice(charactors))
+    assert player1.next_hand().value == 1
+    assert player2.next_hand().value == 1
+    player1.strategy = Doraemon_Strategy()
+    player2.strategy = Dorami_Strategy()
+    hand1 = player1.next_hand().value
+    hand2 = player2.next_hand().value
+    assert hand1 in [0, 1, 2]
+    assert hand2 in [0, 1, 2]
+
+    player1.strategy = Suneo_Strategy()
+    player2.strategy = Sizuka_Strategy()
+    hand1 = player1.next_hand().value
+    hand2 = player2.next_hand().value
+    assert hand1 in [0, 1, 2]
+    assert hand2 in [0, 1, 2]
+
+    player1.strategy = Nobita_Strategy()
+    player2.strategy = Janken_Strategy()
+    hand1 = player1.next_hand().value
+    hand2 = player2.next_hand().value
+    assert hand1 in [0, 1, 2]
+    assert hand2 in [0, 1, 2]
+
+    # assert hand1 in ["グー", "チョキ", "パー"]
+
+
 if __name__ == "__main__":
-    test_janken()
+    test_win_lose()
