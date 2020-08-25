@@ -28,15 +28,19 @@ def test_catch():
 
 
 # argparserのテスト
+# parse_argsにコマンドライン引数を模した配列を入れ、期待通りの振る舞いをするかテスト
 def test_argument_parser():
-    parser = parse_args(["--first", "骨川スネ夫", "--second",
-                         "ドラえもん", "--trials", "100"])
-    assert parser.first == "骨川スネ夫"
-    assert parser.second == "ドラえもん"
+    test_player1 = random.choice(charactors)
+    test_player2 = random.choice(charactors)
+    parser = parse_args(["--first", test_player1, "--second",
+                         test_player2, "--trials", "100"])
+    assert parser.first == test_player1
+    assert parser.second == test_player2
     assert parser.trials == 100
 
 
 # Class Player neme()のテスト
+# インスタンスが期待通りの振る舞いをしているかテスト
 def test_name():
     charactor = random.choice(charactors)
     test_player = Player(charactor).name
@@ -44,6 +48,8 @@ def test_name():
 
 
 # 一人目が静香のときのテスト
+# main()は6個(firstの各手の割合、secondの各手の割合)の値を返す
+# result[0],result[1]はそれぞれfirst,secondの各手の割合を保持する
 def test_first_Sizuka():
     result = main("源静香", random.choice(charactors), 500)
     assert isclose(random_center, result[0]
