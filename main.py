@@ -102,6 +102,7 @@ def main(first, second, trials):
 
         else:
             first_hand = "パー"
+
         # 次のハンドを決定
         hand2 = player2.next_hand()
 
