@@ -10,7 +10,7 @@
 1. ターミナルから`python3 -m venv venv`を実行
 1. `source venv/bin/activate`を実行
 1. `pip install tqdm`で外部から進捗バー表示ライブラリをインストールする。
-1. 編集を保存してターミナルから`python main.py`を実行
+1. `python main.py`を実行
 1. `deactivate`を実行して仮想環境から抜けて終了
 
 ### argparseを用いて、コマンドラインから引数を渡してジャンケンを行うプログラム
