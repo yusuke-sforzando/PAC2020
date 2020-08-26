@@ -14,7 +14,7 @@ from strategy import Nobita_Strategy
 from strategy import Sizuka_Strategy
 from strategy import Suneo_Strategy
 
-char = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
+characters = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
 
 
 class Player:
@@ -31,17 +31,18 @@ result_list = []
 
 
 def main(first: str, second: str, trials: int = 100):
+
+    # 入力エラーチェック
     if 10000 < trials:
         raise ValueError("trials: Out of range")
-    if first not in char or second not in char:
+    if first not in characters or second not in characters:
         raise ValueError("There is no such person")
+
     win_cnt = 0  # firstプレイヤーが勝った数
-
     nobita1 = 0  # firstのび太の一回前の手
-
     nobita2 = 0  # secondのび太の一回前の手
-
     result = 0  # 勝敗結果
+
     # firstの各手の回数
     first_cnt_goo = 0
     first_cnt_chii = 0
@@ -112,7 +113,7 @@ def main(first: str, second: str, trials: int = 100):
         hand2 = player2.next_hand()
 
         # 前回secondのび太が勝った場合
-        if result == "Lose":
+        if second == "野比のび太" and result == "Lose":
             hand2 = nobita2
         nobita2 = hand2
 
@@ -122,7 +123,7 @@ def main(first: str, second: str, trials: int = 100):
         elif hand2 == Janken_Hand.chii:
             second_hand = "チョキ"
 
-        else:
+        elif hand2 == Janken_Hand.paa:
             second_hand = "パー"
 
         result = "Draw"
@@ -136,8 +137,10 @@ def main(first: str, second: str, trials: int = 100):
             result = "Lose"
             nobita2 = hand2
 
+        # 結果を記録
         res = [first_hand, second_hand, result]
         result_list.append(res)
+
         if first_hand == "グー":
             first_cnt_goo += 1
 

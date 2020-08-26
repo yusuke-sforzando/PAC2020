@@ -8,7 +8,7 @@ from main import main
 from main import parse_args
 from strategy import Janken_Strategy
 
-# Charactorsの定義
+# Charactersの定義
 characters = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
 
 # ランダムの中央値と許容誤差の定義
@@ -38,13 +38,10 @@ def test_argument_parser():
     assert parser.trials == 100
 
 
-# 一人目が静香のときのテスト
 # main()は6個(firstの各手の割合、secondの各手の割合)の値を返す
 # result[0],result[1]はそれぞれfirst,secondの各手の割合を保持する
-
-
-# 両方が静香のときのテスト
-def test_two_Sizuka():
+# 静香のテスト
+def test_Sizuka():
     result = main("源静香", "源静香", 500)
     assert isclose(random_center, result[0]
                    [0], abs_tol=absolute_tolerance)
@@ -66,23 +63,25 @@ def test_Doraemon():
     assert result[0][0] == 1.0
     assert result[1][0] == 1.0
 
+
 # スネ夫のテスト
-
-
 def test_Suneo():
     result = main("骨川スネ夫", "骨川スネ夫", 500)
     random_center: float = 1 / 2
-    absolute_tolerance: float = 1 / 20
+    absolute_tolerance: float = 1 / 10
     assert result[0][0] == 0.0
     assert isclose(random_center, result[0]
                    [1], abs_tol=absolute_tolerance)
     assert isclose(random_center, result[0]
                    [2], abs_tol=absolute_tolerance)
+    assert result[1][0] == 0.0
+    assert isclose(random_center, result[1]
+                   [1], abs_tol=absolute_tolerance)
+    assert isclose(random_center, result[1]
+                   [2], abs_tol=absolute_tolerance)
 
 
 # ドラミのテスト
-
-
 def test_Dorami():
     result = main("ドラミ", "ドラミ", 500)
     random_center: float = 1 / 2
@@ -96,8 +95,6 @@ def test_Dorami():
 
 
 # ジャンケンのテスト
-
-
 def test_janken():
     goo = Janken_Hand(0)
     chii = Janken_Hand(1)
@@ -107,7 +104,7 @@ def test_janken():
     assert str(paa) == "パー"
 
 
-# ストラテジテスト
+# ストラテジのテスト
 def test_strategy():
     test_player = Janken_Strategy()
     assert test_player.next_hand() == Janken_Hand.chii
