@@ -138,7 +138,7 @@ def main(first: str, second: str, trials: int = 100):
             nobita2 = hand2
 
         # 結果を記録
-        res = [first_hand, second_hand, result]
+        res = (first_hand, second_hand, result)
         result_list.append(res)
 
         if first_hand == "グー":
