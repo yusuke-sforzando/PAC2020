@@ -8,7 +8,7 @@ from main import main
 from main import parse_args
 from strategy import Janken_Strategy
 
-# Charactersの定義
+# charactersの定義
 characters = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
 
 # ランダムの中央値と許容誤差の定義
