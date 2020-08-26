@@ -14,8 +14,7 @@ class Janken_Strategy:
 # スネ夫ストラテジ
 class Suneo_Strategy(Janken_Strategy):
     def next_hand(self):
-        n = random.randint(1, 2)
-        return Janken_Hand(n)
+        return Janken_Hand(random.choice([1, 2]))
 
 
 # のび太ストラテジ
