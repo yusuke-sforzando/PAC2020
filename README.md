@@ -13,7 +13,7 @@
 1. `python main.py`を実行
 1. `deactivate`を実行して仮想環境から抜けて終了
 
-### argparseを用いて、コマンドラインから引数を渡してジャンケンを行うプログラム
+### コマンドラインから引数を渡してジャンケンを行うプログラム
 
 1. 実行例
    - `python main.py --first 源静香 --second 野比のび太 --trials 10`
