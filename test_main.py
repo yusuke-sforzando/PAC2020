@@ -12,8 +12,8 @@ from strategy import Janken_Strategy
 characters = ["ドラえもん", "ドラミ", "野比のび太", "源静香", "骨川スネ夫"]
 
 # ランダムの中央値と許容誤差の定義
-random_center = 1 / 3
-absolute_tolerance: float = 1 / 10
+random_center = 100 / 3
+relative_tolerance: float = 10 / 3
 
 
 # 予期しない入力値を判定できるかのテスト
@@ -44,17 +44,17 @@ def test_argument_parser():
 def test_Sizuka():
     result = main("源静香", "源静香", 500)
     assert isclose(random_center, result[0]
-                   [0], abs_tol=absolute_tolerance)
+                   [0], rel_tol=relative_tolerance)
     assert isclose(random_center, result[0]
-                   [1], abs_tol=absolute_tolerance)
+                   [1], rel_tol=relative_tolerance)
     assert isclose(random_center, result[0]
-                   [2], abs_tol=absolute_tolerance)
+                   [2], rel_tol=relative_tolerance)
     assert isclose(random_center, result[1]
-                   [0], abs_tol=absolute_tolerance)
+                   [0], rel_tol=relative_tolerance)
     assert isclose(random_center, result[1]
-                   [1], abs_tol=absolute_tolerance)
+                   [1], rel_tol=relative_tolerance)
     assert isclose(random_center, result[1]
-                   [2], abs_tol=absolute_tolerance)
+                   [2], rel_tol=relative_tolerance)
 
 
 # ドラえもんのテスト
@@ -68,17 +68,16 @@ def test_Doraemon():
 def test_Suneo():
     result = main("骨川スネ夫", "骨川スネ夫", 500)
     random_center: float = 1 / 2
-    absolute_tolerance: float = 1 / 10
     assert result[0][0] == 0.0
     assert isclose(random_center, result[0]
-                   [1], abs_tol=absolute_tolerance)
+                   [1], rel_tol=relative_tolerance)
     assert isclose(random_center, result[0]
-                   [2], abs_tol=absolute_tolerance)
+                   [2], rel_tol=relative_tolerance)
     assert result[1][0] == 0.0
     assert isclose(random_center, result[1]
-                   [1], abs_tol=absolute_tolerance)
+                   [1], rel_tol=relative_tolerance)
     assert isclose(random_center, result[1]
-                   [2], abs_tol=absolute_tolerance)
+                   [2], rel_tol=relative_tolerance)
 
 
 # ドラミのテスト
@@ -87,11 +86,11 @@ def test_Dorami():
     random_center: float = 1 / 2
     random_quarter: float = 1 / 4
     assert isclose(random_center, result[0]
-                   [0], abs_tol=absolute_tolerance)
+                   [0], rel_tol=relative_tolerance)
     assert isclose(random_quarter, result[0]
-                   [1], abs_tol=absolute_tolerance)
+                   [1], rel_tol=relative_tolerance)
     assert isclose(random_quarter, result[0]
-                   [2], abs_tol=absolute_tolerance)
+                   [2], rel_tol=relative_tolerance)
 
 
 # ジャンケンのテスト
