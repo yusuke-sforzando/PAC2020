@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-# coding: utf_8
 
+import argparse
+import sys
 from tqdm import tqdm
 
 from hand import Janken_Hand
@@ -13,16 +14,14 @@ from strategy import Nobita_Strategy
 from strategy import Sizuka_Strategy
 from strategy import Suneo_Strategy
 
+characters = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
+
 
 class Player:
     def __init__(self, name):
         self._name = name
         # デフォルトではJankenStrategyを使う
         self.strategy = Janken_Strategy()
-
-    @property
-    def name(self):
-        return str("Player" + self._name)
 
     def next_hand(self):
         return self.strategy.next_hand()
@@ -31,14 +30,19 @@ class Player:
 result_list = []
 
 
-def main(first, second, trials):
+def main(first: str, second: str, trials: int = 100):
+
+    # 入力エラーチェック
+    if 10000 < trials:
+        raise ValueError("trials: Out of range")
+    if first not in characters or second not in characters:
+        raise ValueError("There is no such person")
+
     win_cnt = 0  # firstプレイヤーが勝った数
-
     nobita1 = 0  # firstのび太の一回前の手
-
     nobita2 = 0  # secondのび太の一回前の手
-
     result = 0  # 勝敗結果
+
     # firstの各手の回数
     first_cnt_goo = 0
     first_cnt_chii = 0
@@ -52,39 +56,41 @@ def main(first, second, trials):
     player1 = Player(first)
     player2 = Player(second)
 
+    print("プレイヤー: {} VS {} !\n".format(first, second))
+
+    # 一人目のストラテジ判定
+    if first == str("ドラえもん"):
+        player1.strategy = Doraemon_Strategy()
+
+    if first == str("源静香"):
+        player1.strategy = Sizuka_Strategy()
+
+    if first == str("骨川スネ夫"):
+        player1.strategy = Suneo_Strategy()
+
+    if first == str("ドラミ"):
+        player1.strategy = Dorami_Strategy()
+
+    if first == str("野比のび太"):
+        player1.strategy = Nobita_Strategy()
+
+    # 二人目のストラテジ判定
+    if second == str("ドラえもん"):
+        player2.strategy = Doraemon_Strategy()
+
+    if second == str("源静香"):
+        player2.strategy = Sizuka_Strategy()
+
+    if second == str("骨川スネ夫"):
+        player2.strategy = Suneo_Strategy()
+
+    if second == str("ドラミ"):
+        player2.strategy = Dorami_Strategy()
+
+    if second == str("野比のび太"):
+        player2.strategy = Nobita_Strategy()
+
     for i in tqdm(range(trials)):
-
-        # 一人目のストラテジ判定
-        if first == str("ドラえもん"):
-            player1.strategy = Doraemon_Strategy()
-
-        if first == str("源静香"):
-            player1.strategy = Sizuka_Strategy()
-
-        if first == str("骨川スネ夫"):
-            player1.strategy = Suneo_Strategy()
-
-        if first == str("ドラミ"):
-            player1.strategy = Dorami_Strategy()
-
-        if first == str("野比のび太"):
-            player1.strategy = Nobita_Strategy()
-
-        # 二人目のストラテジ判定
-        if second == str("ドラえもん"):
-            player2.strategy = Doraemon_Strategy()
-
-        if second == str("源静香"):
-            player2.strategy = Sizuka_Strategy()
-
-        if second == str("骨川スネ夫"):
-            player2.strategy = Suneo_Strategy()
-
-        if second == str("ドラミ"):
-            player2.strategy = Dorami_Strategy()
-
-        if second == str("野比のび太"):
-            player2.strategy = Nobita_Strategy()
 
         # 次のハンドを決定
         hand1 = player1.next_hand()
@@ -107,7 +113,7 @@ def main(first, second, trials):
         hand2 = player2.next_hand()
 
         # 前回secondのび太が勝った場合
-        if result == "Lose":
+        if second == "野比のび太" and result == "Lose":
             hand2 = nobita2
         nobita2 = hand2
 
@@ -117,10 +123,11 @@ def main(first, second, trials):
         elif hand2 == Janken_Hand.chii:
             second_hand = "チョキ"
 
-        else:
+        elif hand2 == Janken_Hand.paa:
             second_hand = "パー"
 
         result = "Draw"
+
         if hand1.win_to(hand2):
             result = "Win"
             win_cnt += 1
@@ -130,8 +137,10 @@ def main(first, second, trials):
             result = "Lose"
             nobita2 = hand2
 
-        res = [first_hand, second_hand, result]
+        # 結果を記録
+        res = (first_hand, second_hand, result)
         result_list.append(res)
+
         if first_hand == "グー":
             first_cnt_goo += 1
 
@@ -149,24 +158,32 @@ def main(first, second, trials):
 
         if second_hand == "パー":
             second_cnt_paa += 1
+
     rate = win_cnt / trials
     print("勝率は :{}%です。".format(rate * 100))
+    print(result_list)
 
     # first,secondの各手の確率
     first_hand_rate = (first_cnt_goo / trials,
                        first_cnt_chii / trials, first_cnt_paa / trials)
+
     second_hand_rate = (second_cnt_goo / trials,
-                        second_cnt_chii / trials, first_cnt_paa / trials)
+                        second_cnt_chii / trials, second_cnt_paa / trials)
+
     return first_hand_rate, second_hand_rate
 
 
+def parse_args(args):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--first", type=str, default="野比のび太",
+                        help="Select the first")
+    parser.add_argument("--second", type=str, default="骨川スネ夫",
+                        help="Select the second")
+    parser.add_argument("--trials", type=int, default=100,
+                        help="trilas: 0 < trials < 10000")
+    return parser.parse_args(args)
+
+
 if __name__ == "__main__":
-    first = "野比のび太"
-    second = "ドラミ"
-    trials = 20
-    char = ["源静香", "野比のび太", "ドラえもん", "骨川スネ夫", "ドラミ"]
-    if (first in char) & (second in char):
-        print("プレイヤー: {} VS {} !\n".format(first, second))
-        main(first, second, trials)
-    else:
-        print("==== ValueError!!! ===\n==== Try Again ====")
+    parser = parse_args(sys.argv[1:])
+    main(parser.first, parser.second, parser.trials)
